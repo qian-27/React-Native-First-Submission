@@ -1,11 +1,28 @@
+import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, Button, Alert, TextInput, View } from 'react-native';
 
 export default function App() {
+  const [message, setMessage] = useState('')
+  const showAlert = () => {
+    Alert.alert('Hello','You typed: ' + message);
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <TextInput 
+        style={{
+          color: '#DBC2A4', 
+          fontSize: 30,
+          width: 200, 
+          height: 50, 
+          borderColor: '#782221', 
+          borderWidth: 2
+        }}
+        onChangeText={text => setMessage(text)}
+        inputMode='numeric'
+      />
+      <Button color='#CF3E29' title='Click me' onPress={showAlert} />
+      <StatusBar style='auto' />
     </View>
   );
 }
@@ -13,7 +30,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#2C1D27',
     alignItems: 'center',
     justifyContent: 'center',
   },
